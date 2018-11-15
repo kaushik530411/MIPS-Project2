@@ -134,6 +134,12 @@ actual_conversion_loop:
 
 	slti $t1, $a0, 58  #  if $a0 < 58 ($a0 = [48, 57]) -> $t1 = 1, else $t0 = 0 ($a0 = [58, 121])
 	bne $t1, $zero, digit_conversion
+	
+	slti $t1, $a0, 65  #  if  $a0 < 65 ($a0 = [58, 64]) -> $t1 = 1, else $t0 = 0 ($a0 = [65, 121])
+	bne $t1, $zero, is_invalid
+
+	slti $t1, $a0, 90  #  if $a0 < 90 ($a0 = [65, 89]) -> $t1 = 1, else $t0 = 0 ($a0 = [90, 121])
+	bne $t1, $zero, upper_conversion
 
 	j actual_conversion_loop
 
