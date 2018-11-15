@@ -85,6 +85,12 @@ is_upper:
 	bne $t2, 1, check_prev
 	li $t4, 1
 	j loop
+
+is_lower:
+	addi $t2, $t2, 1  #  increment for valid character count
+	bne $t2, 1, check_prev
+	li $t4, 1
+	j loop
 	
 exit:
 	li $v0, 10 # end the program
