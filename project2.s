@@ -115,6 +115,9 @@ start_conversion:
 
 	beq $t4, -1, is_invalid  #  if spaces between valid chars of required length
 	
+	slti $t1, $t2, 4  #  check if padding of the input is required
+	bne $t1, $zero, padding
+	
 exit:
 	li $v0, 10 # end the program
 	syscall
