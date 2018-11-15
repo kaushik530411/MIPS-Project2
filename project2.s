@@ -50,6 +50,9 @@ loop:
 	
 	slti $t1, $a0, 90  #  if $a0 < 90 ($a0 = [65, 89]) -> $t1 = 1, else $t0 = 0 ($a0 = [90, 121])
 	bne $t1, $zero, is_upper
+	
+	slti $t1, $a0, 97  #  if $a0 < 97 ($a0 = [90, 96]) -> $t1 = 1, else $t0 = 0 ($a0 = [97, 121])
+	bne $t1, $zero, is_invalid
 
 	j loop
 
