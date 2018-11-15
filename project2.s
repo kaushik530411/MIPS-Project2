@@ -124,6 +124,9 @@ actual_conversion_loop:
 
 	addi $t0, $t0, 1  #  shifing the marker to the right by one byte
 
+	slti $t1, $a0, 122 # if $a0 < 122 ($a0 = [0, 121]) ->  $t1 = 1, else $t0 = 0 ($a0 = [122, 127])
+	beq $t1, $zero, is_invalid
+
 	j actual_conversion_loop
 	
 exit:
