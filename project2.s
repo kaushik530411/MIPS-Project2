@@ -27,6 +27,14 @@ main:
 
 	li $t2, 0  #  initializing $t1 to 0 inorder to later find the length of the valid string
 	li $t4, 0  #  initializing $t1 to 0 later when a character is found will change to 1
+
+loop:
+	lb $a0, 0($t0)
+	beq $a0, 10, start_conversion # last char is line feed ($a0 = 10) so exit the loop and start conversion
+
+	addi $t0, $t0, 1  #  shifing the marker to the right by one byte
+
+	j loop
 	
 exit:
 	li $v0, 10 # end the program
