@@ -24,6 +24,9 @@ main:
 	la $a0, input_empty  # load address of string to be printed into $a0
 	syscall
 	j exit  #  exit if it is an empty string
+
+	li $t2, 0  #  initializing $t1 to 0 inorder to later find the length of the valid string
+	li $t4, 0  #  initializing $t1 to 0 later when a character is found will change to 1
 	
 exit:
 	li $v0, 10 # end the program
