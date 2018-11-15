@@ -73,6 +73,12 @@ is_digit:
 	bne $t2, 1, check_prev  #  if valid char occered for multiple occurences check all prev char to be correct
 	li $t4, 1  # only set if first valid char is seen
 	j loop
+
+is_upper:
+	addi $t2, $t2, 1  #  increment for valid character count
+	bne $t2, 1, check_prev
+	li $t4, 1
+	j loop
 	
 exit:
 	li $v0, 10 # end the program
