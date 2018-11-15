@@ -14,6 +14,11 @@ main:
 	move $t0, $a0  #  move string to $t0
 	move $t7, $a0  #  a copy of string in other register for future use
 
+	check_empty:
+	lb $a0, 0($t0)
+	beq $a0, 10, is_empty
+	j loop  #  if it is not empty then parse through the loop to check if there is any invalid characters
+	
 exit:
 	li $v0, 10 # end the program
 	syscall
