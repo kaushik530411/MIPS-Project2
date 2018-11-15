@@ -18,6 +18,12 @@ main:
 	lb $a0, 0($t0)
 	beq $a0, 10, is_empty
 	j loop  #  if it is not empty then parse through the loop to check if there is any invalid characters
+
+	is_empty:
+	li $v0, 4  #  system call code for printing string = 4
+	la $a0, input_empty  # load address of string to be printed into $a0
+	syscall
+	j exit  #  exit if it is an empty string
 	
 exit:
 	li $v0, 10 # end the program
