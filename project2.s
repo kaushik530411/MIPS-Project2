@@ -45,6 +45,10 @@ is_space:
 	beq $t4, -1, loop  #  already found space between valid chars, leave $t4 = -1 (do noting)
 	beq $t4, 1, space_seen_after_valid_char  #  previously seen a valid char
 	j loop
+
+space_seen_after_valid_char:
+	li $t4, 0
+	j loop
 	
 exit:
 	li $v0, 10 # end the program
