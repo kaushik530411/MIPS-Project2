@@ -95,6 +95,10 @@ is_lower:
 check_prev:
 	beq $t4, 0, space_between_valid_chars  #  space found between valid chars (ex. "A B")
 	j loop
+
+space_between_valid_chars:
+	li $t4, -1  #  Space between valid chars found
+	j loop
 	
 exit:
 	li $v0, 10 # end the program
