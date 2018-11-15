@@ -117,6 +117,14 @@ start_conversion:
 	
 	slti $t1, $t2, 4  #  check if padding of the input is required
 	bne $t1, $zero, padding
+
+actual_conversion_loop:
+	lb $a0, 0($t0)
+	beq $a0, 10, print_value # last char is line feed ($a0 = 10) so exit the loop and start conversion
+
+	addi $t0, $t0, 1  #  shifing the marker to the right by one byte
+
+	j actual_conversion_loop
 	
 exit:
 	li $v0, 10 # end the program
