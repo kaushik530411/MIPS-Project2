@@ -184,7 +184,13 @@ padding_loop:
 	div $a2, $a1
 	mflo $a2
 	j padding_loop
-	
+
+is_long:
+	li $v0, 4  #  system call code for printing string = 4
+	la $a0, input_long  # load address of string to be printed into $a0
+	syscall
+	j exit  #  exit since it is too long
+
 exit:
 	li $v0, 10 # end the program
 	syscall
