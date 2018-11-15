@@ -129,6 +129,12 @@ actual_conversion_loop:
 
 	beq $a0, 32, actual_conversion_loop  #  skip the space char
 
+	slti $t1, $a0, 48  # if $a0 < 48 ($a0 = [0, 47] - 32) -> $t1 = 1, else $t0 = 0 ($a0 = [48, 121])
+	bne $t1, $zero, is_invalid
+
+	slti $t1, $a0, 58  #  if $a0 < 58 ($a0 = [48, 57]) -> $t1 = 1, else $t0 = 0 ($a0 = [58, 121])
+	bne $t1, $zero, digit_conversion
+
 	j actual_conversion_loop
 	
 exit:
