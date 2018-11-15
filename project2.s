@@ -136,6 +136,11 @@ actual_conversion_loop:
 	bne $t1, $zero, digit_conversion
 
 	j actual_conversion_loop
+
+digit_conversion:
+	addi $a0, $a0, -48  #  conversion of ascii value to base-35
+	mult $a0, $a2  # [bit_value * 35^n]
+	mflo $t9
 	
 exit:
 	li $v0, 10 # end the program
