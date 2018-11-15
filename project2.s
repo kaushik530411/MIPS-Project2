@@ -49,6 +49,12 @@ is_space:
 space_seen_after_valid_char:
 	li $t4, 0
 	j loop
+
+is_invalid:
+	li $v0, 4  #  system call code for printing string = 4
+	la $a0, input_invalid
+	syscall
+	j exit
 	
 exit:
 	li $v0, 10 # end the program
