@@ -14,12 +14,12 @@ main:
 	move $t0, $a0  #  move string to $t0
 	move $t7, $a0  #  a copy of string in other register for future use
 
-	check_empty:
+check_empty:
 	lb $a0, 0($t0)
 	beq $a0, 10, is_empty
 	j loop  #  if it is not empty then parse through the loop to check if there is any invalid characters
 
-	is_empty:
+is_empty:
 	li $v0, 4  #  system call code for printing string = 4
 	la $a0, input_empty  # load address of string to be printed into $a0
 	syscall
