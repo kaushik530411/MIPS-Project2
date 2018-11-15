@@ -127,6 +127,8 @@ actual_conversion_loop:
 	slti $t1, $a0, 122 # if $a0 < 122 ($a0 = [0, 121]) ->  $t1 = 1, else $t0 = 0 ($a0 = [122, 127])
 	beq $t1, $zero, is_invalid
 
+	beq $a0, 32, actual_conversion_loop  #  skip the space char
+
 	j actual_conversion_loop
 	
 exit:
