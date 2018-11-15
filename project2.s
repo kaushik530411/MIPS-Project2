@@ -141,6 +141,12 @@ actual_conversion_loop:
 	slti $t1, $a0, 90  #  if $a0 < 90 ($a0 = [65, 89]) -> $t1 = 1, else $t0 = 0 ($a0 = [90, 121])
 	bne $t1, $zero, upper_conversion
 
+	slti $t1, $a0, 97  #  if $a0 < 97 ($a0 = [90, 96]) -> $t1 = 1, else $t0 = 0 ($a0 = [97, 121])
+	bne $t1, $zero, is_invalid
+	
+	slti $t1, $a0, 122  #if $a0 < 122 (#a0 = [97, 121]) -> $t1 = 1, else $t0 = 0 but max possible $a0 = 121, so 'else' not possible
+	bne $t1, $zero, lower_conversion
+
 	j actual_conversion_loop
 
 digit_conversion:
