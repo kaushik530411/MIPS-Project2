@@ -102,7 +102,7 @@ space_between_valid_chars:
 
 start_conversion:
 	li $a1, 35  #  loading the base
-	li $a2, 42875  #  (base * 3) -> Highest possible value for Most significant bit (MSB) if MSB is 1
+	li $a2, 42875  #  (base^3) -> Highest possible value for Most significant bit (MSB) if MSB is 1
 	li $a3, 4  #  Max possible length of a valid char array
 	li $t8, 0  #  initializing to get the final conversion sum
 	
