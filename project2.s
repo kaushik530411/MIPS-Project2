@@ -179,6 +179,11 @@ lower_conversion:
 padding:
 	sub $t5, $a3, $t2  # difference between ideal and input string (valid) lengths
 padding_loop:
+	beq $t5, 0, actual_conversion_loop
+	addi $t5, $t5, -1
+	div $a2, $a1
+	mflo $a2
+	j padding_loop
 	
 exit:
 	li $v0, 10 # end the program
