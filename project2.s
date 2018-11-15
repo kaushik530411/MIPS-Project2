@@ -105,6 +105,15 @@ start_conversion:
 	li $a2, 42875  #  (base^3) -> Highest possible value for Most significant bit (MSB) if MSB is 1
 	li $a3, 4  #  Max possible length of a valid char array
 	li $t8, 0  #  initializing to get the final conversion sum
+
+	move $t0, $t7  #  move the string again to $t0 for fresh calculation
+
+	beq $t2, 0, is_empty  #  string has all spaces
+
+	slti $t1, $t2, 5  #  check for more than 4 characters
+	beq $t1, $zero, is_long  #  too long to handle
+
+	beq $t4, -1, is_invalid  #  if spaces between valid chars of required length
 	
 exit:
 	li $v0, 10 # end the program
