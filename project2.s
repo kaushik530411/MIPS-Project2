@@ -45,6 +45,9 @@ loop:
 	slti $t1, $a0, 58  #  if $a0 < 58 ($a0 = [48, 57]) -> $t1 = 1, else $t0 = 0 ($a0 = [58, 121])
 	bne $t1, $zero, is_digit
 
+	slti $t1, $a0, 65  #  if  $a0 < 65 ($a0 = [58, 64]) -> $t1 = 1, else $t0 = 0 ($a0 = [65, 121])
+	bne $t1, $zero, is_invalid
+
 	j loop
 
 is_space:
