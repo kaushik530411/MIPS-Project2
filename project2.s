@@ -110,7 +110,10 @@ check_prev:
 	j loop
 
 space_between_valid_chars:
-	li $t4, -1  #  Space between valid chars found
+	li $s0, -1
+	add $t2, $t2, $t3  # length = length + number_of_spaces
+	li $t3, 0  #  set space count back to 0
+	li $t4, 1  #  Space between valid chars found
 	j loop
 
 start_conversion:
