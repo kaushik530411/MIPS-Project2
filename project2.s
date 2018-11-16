@@ -116,6 +116,12 @@ space_between_valid_chars:
 	li $t4, 1  #  Space between valid chars found
 	j loop
 
+invalid:
+	li $v0, 4  #  system call code for printing string = 4
+	la $a0, input_invalid
+	syscall
+	j exit
+
 start_conversion:
 	li $a1, 35  #  loading the base
 	li $a2, 42875  #  (base^3) -> Highest possible value for Most significant bit (MSB) if MSB is 1
