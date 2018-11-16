@@ -135,9 +135,9 @@ start_conversion:
 	slti $t1, $t2, 5  #  check for more than 4 characters
 	beq $t1, $zero, is_long  #  too long to handle
 
-	beq $t4, -1, is_invalid  #  if spaces between valid chars of required length
-	
-	slti $t1, $t2, 4  #  check if padding of the input is required
+	beq $s0, -1, invalid  #  if spaces between valid chars of required length
+
+	slti $t1, $s1, 4  #  check if padding of the input is required
 	bne $t1, $zero, padding
 
 actual_conversion_loop:
