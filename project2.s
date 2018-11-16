@@ -25,8 +25,11 @@ is_empty:
 	syscall
 	j exit  #  exit if it is an empty string
 
-	li $t2, 0  #  initializing $t1 to 0 inorder to later find the length of the valid string
-	li $t4, 0  #  initializing $t1 to 0 later when a character is found will change to 1
+	li $t2, 0  #  initializing $t1 to 0 inorder to later find the length of the chars in string
+	li $t4, -10  #  initializing $t1 to -10 later when a character is found will change to 1
+	li $t3, 0  #  to count spaces.
+	li $s0, -1 # check for the validity of the program
+	li $s1, 0  # length of valid chars ONLY
 
 loop:
 	lb $a0, 0($t0)
