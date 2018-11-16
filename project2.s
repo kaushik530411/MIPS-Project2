@@ -68,8 +68,13 @@ is_space:
 	beq $t4, 0, increment_space_count
 	j loop
 
+increment_space_count:
+	addi $t3, $t3, 1  # increase the space count after a non space char is seen
+	j loop
+
 space_seen_after_valid_char:
 	li $t4, 0
+	addi $t3, $t3, 1  # increase the space count after a non space char is seen
 	j loop
 
 is_invalid:
