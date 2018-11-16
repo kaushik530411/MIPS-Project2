@@ -199,7 +199,7 @@ lower_conversion:
 	j actual_conversion_loop
 
 padding:
-	sub $t5, $a3, $t2  # difference between ideal and input string (valid) lengths
+	sub $t5, $a3, $s1  # difference between ideal and input string (valid) lengths
 padding_loop:
 	beq $t5, 0, actual_conversion_loop
 	addi $t5, $t5, -1
