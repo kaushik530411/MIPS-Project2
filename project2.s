@@ -63,8 +63,9 @@ loop:
 	j loop
 
 is_space:
-	beq $t4, -1, loop  #  already found space between valid chars, leave $t4 = -1 (do noting)
+	beq $t2, 0, loop  #  skip spaces if the first non-space char is not found
 	beq $t4, 1, space_seen_after_valid_char  #  previously seen a valid char
+	beq $t4, 0, increment_space_count
 	j loop
 
 space_seen_after_valid_char:
