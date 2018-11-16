@@ -92,6 +92,7 @@ is_digit:
 	j loop
 
 is_upper:
+	addi $s1, $s1, 1  #  increment for valid character count
 	addi $t2, $t2, 1  #  increment for valid character count
 	bne $t2, 1, check_prev
 	li $t4, 1
