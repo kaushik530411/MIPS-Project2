@@ -78,10 +78,11 @@ space_seen_after_valid_char:
 	j loop
 
 is_invalid:
-	li $v0, 4  #  system call code for printing string = 4
-	la $a0, input_invalid
-	syscall
-	j exit
+	li $s0, -1
+	addi $t2, $t2, 1  #  increment for character count
+	bne $t2, 1, check_prev  #  if valid char occered for multiple occurences check all prev char to be correct
+	li $t4, 1  # only set if first valid char is seen
+	j loop
 
 is_digit:
 	addi $t2, $t2, 1  #  increment for valid character count
